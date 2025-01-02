@@ -1,5 +1,7 @@
 # Tic-Tac-Toe-Python  
 
+![Tic-Tac-Toe-Python  ](https://scontent.fdac138-2.fna.fbcdn.net/v/t39.30808-6/472265231_122132930648552158_8730275981318964287_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=TY1hjA9DXhQQ7kNvgHe2RsU&_nc_zt=23&_nc_ht=scontent.fdac138-2.fna&_nc_gid=ARMVJlcotd8-11Mp4OQxaQA&oh=00_AYC2XPRq_UT-Gvzuy9TFchEArdJYHnxZC9T_JbZb7bSqAg&oe=677CBADB)
+
 Welcome to **Tic-Tac-Toe-Python**, a simple yet fun implementation of the classic Tic-Tac-Toe game in Python. Challenge the computer in a battle of wits where you play as `O`, and the computer plays as `X`.  
 
 ---
