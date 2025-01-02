@@ -81,4 +81,3 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 Enjoy the game, and may the best player win! 🎉
-```
