@@ -1,7 +1,5 @@
 # Tic-Tac-Toe-Python  
 
-![Tic-Tac-Toe-Python](https://imgur.com/a/iJFa2Cz.png)
-
 Welcome to **Tic-Tac-Toe-Python**, a simple yet fun implementation of the classic Tic-Tac-Toe game in Python. Challenge the computer in a battle of wits where you play as `O`, and the computer plays as `X`.  
 
 ---
