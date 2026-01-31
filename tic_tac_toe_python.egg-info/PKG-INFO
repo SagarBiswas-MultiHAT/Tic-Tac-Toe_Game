@@ -1,0 +1,196 @@
+Metadata-Version: 2.4
+Name: tic-tac-toe-python
+Version: 1.2.1
+Summary: A simple Tic-Tac-Toe game with CLI and GUI in Python.
+License: MIT
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: black>=24.0.0; extra == "dev"
+Requires-Dist: mypy>=1.8.0; extra == "dev"
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0.0; extra == "dev"
+Requires-Dist: ruff>=0.2.0; extra == "dev"
+Dynamic: license-file
+
+# Tic-Tac-Toe-Python
+
+Welcome to **Tic-Tac-Toe-Python**, a clean and beginner-friendly command‑line Tic‑Tac‑Toe game written in Python. You play as `O`, the computer plays as `X`, and you can choose how smart the computer should be (easy, mid, or hard).
+
+---
+
+![](https://imgur.com/UtwzCle.png)
+
+---
+
+## Features
+
+- **Interactive Gameplay**: Play in the console or a modern Tkinter GUI.
+- **Three AI Levels**: Easy (random), Mid (win/block), Hard (optimal play).
+- **Series Mode**: Play a set of matches and decide the winner by total wins.
+- **Visually Clear Board**: The board is displayed with a neat and readable design.
+- **Error Handling**: Invalid or duplicate moves are handled gracefully.
+
+---
+
+## What’s Included
+
+- **Human vs AI** gameplay in the terminal and GUI
+- **Difficulty selection** at game start
+- **Total match selection** and alternating first moves
+- **Readable board rendering** with numbered positions
+- **Modular code** split into game logic and CLI handling
+
+---
+
+## How to Play
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/Tic-Tac-Toe-Python.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Tic-Tac-Toe-Python
+   ```
+3. (Optional) Install as a package:
+   ```bash
+   python -m pip install .
+   ```
+4. Run the CLI game:
+   ```bash
+   python cli.py
+   ```
+   Or launch the GUI:
+   ```bash
+   python gui.py
+   ```
+   If installed as a package:
+   ```bash
+   tic-tac-toe
+   tic-tac-toe-gui
+   ```
+5. Choose AI difficulty when prompted: `easy`, `mid`, or `hard`.
+6. Choose total matches for the series.
+7. The first move of Match 1 is chosen randomly, then alternates each match.
+8. Pick your move by entering a number (1‑9) corresponding to the board position:
+
+   ```
+   +-------+-------+-------+
+   |   1   |   2   |   3   |
+   +-------+-------+-------+
+   |   4   |   5   |   6   |
+   +-------+-------+-------+
+   |   7   |   8   |   9   |
+   +-------+-------+-------+
+   ```
+
+---
+
+## Rules
+
+- Players take turns placing their symbols (`O` for you, `X` for the computer) on the board.
+- The first player to align three of their symbols horizontally, vertically, or diagonally wins.
+- If all spaces are filled without a winner, the game ends in a draw.
+- The series winner is decided by total wins after all matches are played.
+
+---
+
+## Difficulty Levels
+
+- **Easy**: Random legal moves. Great for first‑time players.
+- **Mid**: Tries to win in one move or block you from winning; otherwise random.
+- **Hard**: Uses optimal play (minimax). It won’t make mistakes.
+
+---
+
+## Series Play (Total Matches)
+
+- You choose how many matches to play (e.g., 3, 5, 7).
+- Match 1 starter is random.
+- Each following match alternates the first move between you and the computer.
+- The overall winner is the player with the most wins.
+
+---
+
+## Example Gameplay
+
+Here's an example of the board during gameplay:
+
+```
++-------+-------+-------+
+|   X   |       |       |
++-------+-------+-------+
+|       |   O   |       |
++-------+-------+-------+
+|       |       |       |
++-------+-------+-------+
+```
+
+---
+
+## Project Structure
+
+```
+gui.py               # GUI (Tkinter)
+cli.py               # Console UI and game loop
+game.py              # Core game logic + AI
+tests/               # Automated tests
+```
+
+---
+
+## Learning Opportunity
+
+This project is perfect for beginners who want to:
+
+- Understand Python basics.
+- Learn game development logic.
+- Work with functions, lists, and loops.
+
+---
+
+## Development & Testing
+
+- Run tests:
+
+  ```bash
+  python -m pytest
+  ```
+
+- Optional: install dev tools (linting, formatting, typing):
+  ```bash
+  python -m pip install -e .[dev]
+  ```
+
+---
+
+## Troubleshooting
+
+- **Game doesn’t start**: Make sure you’re running from the project root:
+  ```bash
+  python cli.py
+  ```
+- **Module not found**: Ensure you run the command from the project root.
+- **GUI doesn’t launch**: Make sure Tkinter is available in your Python installation.
+
+---
+
+## Contributions
+
+Contributions are welcome! If you'd like to improve the AI, enhance the interface, or add new features, feel free to fork the repository and submit a pull request.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Enjoy the game, and may the best player win! 🎉

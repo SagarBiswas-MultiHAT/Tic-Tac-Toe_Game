@@ -1,0 +1,15 @@
+LICENSE
+README.md
+cli.py
+game.py
+gui.py
+pyproject.toml
+tests/test_cli.py
+tests/test_game.py
+tests/test_gui.py
+tic_tac_toe_python.egg-info/PKG-INFO
+tic_tac_toe_python.egg-info/SOURCES.txt
+tic_tac_toe_python.egg-info/dependency_links.txt
+tic_tac_toe_python.egg-info/entry_points.txt
+tic_tac_toe_python.egg-info/requires.txt
+tic_tac_toe_python.egg-info/top_level.txt

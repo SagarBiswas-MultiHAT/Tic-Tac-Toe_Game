@@ -108,6 +108,12 @@ def choose_ai_move(board: Board, level: str) -> Position | None:
         apply_move(board, position, COMPUTER_SYMBOL)
         return position
 
+    # For hard level prefer an immediate winning move if available (deterministic)
+    winning_move = _find_winning_move(board, COMPUTER_SYMBOL)
+    if winning_move is not None:
+        apply_move(board, winning_move, COMPUTER_SYMBOL)
+        return winning_move
+
     best_score = -2
     best_moves: list[Position] = []
     for position in free_fields:

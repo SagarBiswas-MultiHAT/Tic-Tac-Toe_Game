@@ -326,7 +326,7 @@ def main() -> None:
     if "clam" in style.theme_names():
         style.theme_use("clam")
     TicTacToeGUI(root)
-    root.eval('tk::PlaceWindow . center')
+    root.eval("tk::PlaceWindow . center")
     root.mainloop()
 
 

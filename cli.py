@@ -4,10 +4,10 @@ from random import choice
 from typing import Callable
 
 from game import (
-    Board,
     COMPUTER_SYMBOL,
     EMPTY,
     PLAYER_SYMBOL,
+    Board,
     apply_move,
     choose_ai_move,
     is_draw,
@@ -51,8 +51,7 @@ def enter_move(board: Board, input_fn: Callable[[str], str] = input) -> None:
 
 def print_instructions() -> None:
     print("\n..:: This is the game of Tic-Tac-Toe. You play 'O' and I play 'X'.\n")
-    print(
-        """ \t\t+-------+-------+-------+
+    print(""" \t\t+-------+-------+-------+
     \t\t|       |       |       |
     \t\t|   1   |   2   |   3   |
     \t\t|       |       |       |
@@ -65,8 +64,7 @@ def print_instructions() -> None:
     \t\t|   7   |   8   |   9   |
     \t\t|       |       |       |
     \t\t+-------+-------+-------+
-"""
-    )
+""")
     print("\n==> Let's start!\n")
 
 
@@ -136,10 +134,7 @@ def run_game(input_fn: Callable[[str], str] = input) -> None:
     total_matches = prompt_total_matches(input_fn)
     first_starter = choice([PLAYER_SYMBOL, COMPUTER_SYMBOL])
     first_starter_text = "You (O)" if first_starter == PLAYER_SYMBOL else "Computer (X)"
-    print(
-        "Randomly chosen starter for Match 1: "
-        f"{first_starter_text}\n"
-    )
+    print("Randomly chosen starter for Match 1: " f"{first_starter_text}\n")
 
     human_wins = 0
     computer_wins = 0
@@ -156,9 +151,7 @@ def run_game(input_fn: Callable[[str], str] = input) -> None:
         else:
             draws += 1
 
-        current_starter = (
-            PLAYER_SYMBOL if current_starter == COMPUTER_SYMBOL else COMPUTER_SYMBOL
-        )
+        current_starter = PLAYER_SYMBOL if current_starter == COMPUTER_SYMBOL else COMPUTER_SYMBOL
 
     print("\n=== Final Results ===")
     print(f"You (O): {human_wins}")
