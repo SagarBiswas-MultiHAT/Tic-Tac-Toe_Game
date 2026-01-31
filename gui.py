@@ -3,6 +3,7 @@ from __future__ import annotations
 import tkinter as tk
 from random import choice
 from tkinter import ttk
+from typing import Callable
 
 from game import (
     COMPUTER_SYMBOL,
@@ -178,13 +179,19 @@ class TicTacToeGUI:
                     text=" ",
                     width=7,
                     style="Cell.TButton",
-                    command=lambda r=row, c=col: self.on_cell_click(r, c),
+                    command=self._create_cell_command(row, col),
                 )
                 button.grid(row=row, column=col, padx=8, pady=8, ipadx=10, ipady=10)
                 button_row.append(button)
             self.buttons.append(button_row)
 
         content.columnconfigure(1, weight=1)
+
+    def _create_cell_command(self, row: int, col: int) -> Callable[[], None]:
+        def callback() -> None:
+            self.on_cell_click(row, col)
+
+        return callback
 
     def start_series(self) -> None:
         self.total_matches = max(1, int(self.total_matches_var.get()))

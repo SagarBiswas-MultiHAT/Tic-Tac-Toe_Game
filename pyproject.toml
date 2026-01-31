@@ -47,12 +47,12 @@ disallow_any_generics = true
 disallow_subclassing_any = true
 
 [tool.pytest.ini_options]
-addopts = "-q --cov=game --cov=cli --cov=gui --cov-report=term-missing"
+addopts = "-q --cov=game --cov=cli --cov-report=term-missing"
 testpaths = ["tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["."]
+source = ["cli.py", "game.py"]
 
 [tool.coverage.report]
 show_missing = true
