@@ -4,7 +4,11 @@ Welcome to **Tic-Tac-Toe-Python**, a clean and beginner-friendly command‑line 
 
 ---
 
+<div align="center">
+
 ![](https://imgur.com/UtwzCle.png)
+
+</div>
 
 ---
 
