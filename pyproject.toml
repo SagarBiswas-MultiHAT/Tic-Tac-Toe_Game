@@ -1,0 +1,10 @@
+[project]
+name = "tic-tac-toe-python"
+version = "1.1.0"
+description = "A simple Tic-Tac-Toe CLI game in Python."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+
+[project.scripts]
+tic-tac-toe = "cli:main"
