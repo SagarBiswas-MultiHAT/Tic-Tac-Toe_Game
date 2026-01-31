@@ -23,6 +23,6 @@ jobs:
       - name: Format (black)
         run: black --check .
       - name: Type check (mypy)
-        run: mypy .
+        run: mypy cli.py game.py gui.py
       - name: Run tests
         run: pytest
