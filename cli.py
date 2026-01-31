@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from random import choice
 from typing import Callable
 
 from game import (
@@ -66,7 +67,6 @@ def print_instructions() -> None:
     \t\t+-------+-------+-------+
 """
     )
-    print("System will make the first move. Just enter the number of the field you want to occupy.\n")
     print("\n==> Let's start!\n")
 
 
@@ -79,14 +79,31 @@ def prompt_difficulty(input_fn: Callable[[str], str]) -> str:
         print("Invalid choice. Please enter easy, mid, or hard.")
 
 
-def run_game(input_fn: Callable[[str], str] = input) -> None:
-    print_instructions()
+def prompt_total_matches(input_fn: Callable[[str], str]) -> int:
+    while True:
+        try:
+            total = int(input_fn("Total matches (e.g., 3, 5, 7): "))
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            continue
 
-    difficulty = prompt_difficulty(input_fn)
+        if total >= 1:
+            return total
 
+        print("Please enter a number greater than 0.")
+
+
+def play_match(
+    difficulty: str,
+    starter: str,
+    input_fn: Callable[[str], str],
+) -> str | None:
     board = new_board()
-    choose_ai_move(board, difficulty)
-    human_turn = True
+    human_turn = starter == PLAYER_SYMBOL
+
+    if starter == COMPUTER_SYMBOL:
+        choose_ai_move(board, difficulty)
+        human_turn = True
 
     while True:
         display_board(board)
@@ -95,21 +112,63 @@ def run_game(input_fn: Callable[[str], str] = input) -> None:
             enter_move(board, input_fn)
             if victory_for(board, PLAYER_SYMBOL):
                 display_board(board)
-                print("\n..:: Congratulations! You won!\n")
-                return
+                print("\n..:: Congratulations! You won this match!\n")
+                return PLAYER_SYMBOL
         else:
             choose_ai_move(board, difficulty)
             if victory_for(board, COMPUTER_SYMBOL):
                 display_board(board)
-                print("\n:( Sorry, I won!\n")
-                return
+                print("\n:( Sorry, I won this match!\n")
+                return COMPUTER_SYMBOL
 
         if is_draw(board):
             display_board(board)
-            print("\n:) It's a draw!\n")
-            return
+            print("\n:) This match is a draw!\n")
+            return None
 
         human_turn = not human_turn
+
+
+def run_game(input_fn: Callable[[str], str] = input) -> None:
+    print_instructions()
+
+    difficulty = prompt_difficulty(input_fn)
+    total_matches = prompt_total_matches(input_fn)
+    first_starter = choice([PLAYER_SYMBOL, COMPUTER_SYMBOL])
+    print(
+        f"Randomly chosen starter for Match 1: {'You (O)' if first_starter == PLAYER_SYMBOL else 'Computer (X)'}\n"
+    )
+
+    human_wins = 0
+    computer_wins = 0
+    draws = 0
+    current_starter = first_starter
+
+    for match in range(1, total_matches + 1):
+        print(f"--- Match {match}/{total_matches} ---")
+        winner = play_match(difficulty, current_starter, input_fn)
+        if winner == PLAYER_SYMBOL:
+            human_wins += 1
+        elif winner == COMPUTER_SYMBOL:
+            computer_wins += 1
+        else:
+            draws += 1
+
+        current_starter = (
+            PLAYER_SYMBOL if current_starter == COMPUTER_SYMBOL else COMPUTER_SYMBOL
+        )
+
+    print("\n=== Final Results ===")
+    print(f"You (O): {human_wins}")
+    print(f"Computer (X): {computer_wins}")
+    print(f"Draws: {draws}\n")
+
+    if human_wins > computer_wins:
+        print("..:: You win the series! Great job! ::..\n")
+    elif computer_wins > human_wins:
+        print("..:: Computer wins the series. Try again! ::..\n")
+    else:
+        print("..:: The series is a draw! ::..\n")
 
 
 def main() -> None:

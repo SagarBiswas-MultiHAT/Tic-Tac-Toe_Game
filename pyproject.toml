@@ -1,10 +1,59 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "tic-tac-toe-python"
-version = "1.1.0"
-description = "A simple Tic-Tac-Toe CLI game in Python."
+version = "1.2.1"
+description = "A simple Tic-Tac-Toe game with CLI and GUI in Python."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 
+[project.optional-dependencies]
+dev = [
+	"black>=24.0.0",
+	"mypy>=1.8.0",
+	"pytest>=7.0.0",
+	"pytest-cov>=4.0.0",
+	"ruff>=0.2.0",
+]
+
 [project.scripts]
 tic-tac-toe = "cli:main"
+tic-tac-toe-gui = "gui:main"
+
+[tool.setuptools]
+py-modules = ["cli", "game", "gui"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+files = ["cli.py", "game.py", "gui.py"]
+warn_unused_ignores = true
+warn_return_any = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+
+[tool.pytest.ini_options]
+addopts = "-q --cov=game --cov=cli --cov=gui --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["."]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 95

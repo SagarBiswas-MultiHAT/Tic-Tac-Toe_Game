@@ -6,8 +6,9 @@ Welcome to **Tic-Tac-Toe-Python**, a clean and beginner-friendly command‑line 
 
 ## Features
 
-- **Interactive Gameplay**: Enter your moves via a user-friendly console interface.
+- **Interactive Gameplay**: Play in the console or a modern Tkinter GUI.
 - **Three AI Levels**: Easy (random), Mid (win/block), Hard (optimal play).
+- **Series Mode**: Play a set of matches and decide the winner by total wins.
 - **Visually Clear Board**: The board is displayed with a neat and readable design.
 - **Error Handling**: Invalid or duplicate moves are handled gracefully.
 
@@ -15,8 +16,9 @@ Welcome to **Tic-Tac-Toe-Python**, a clean and beginner-friendly command‑line 
 
 ## What’s Included
 
-- **Human vs AI** gameplay in the terminal
+- **Human vs AI** gameplay in the terminal and GUI
 - **Difficulty selection** at game start
+- **Total match selection** and alternating first moves
 - **Readable board rendering** with numbered positions
 - **Modular code** split into game logic and CLI handling
 
@@ -32,13 +34,27 @@ Welcome to **Tic-Tac-Toe-Python**, a clean and beginner-friendly command‑line 
    ```bash
    cd Tic-Tac-Toe-Python
    ```
-3. Run the game:
+3. (Optional) Install as a package:
    ```bash
-   python "tic-tac-toe v1.1.py"
+   python -m pip install .
    ```
-4. Choose AI difficulty when prompted: `easy`, `mid`, or `hard`.
-5. The computer makes the first move. On harder levels it will not always start in the center.
-6. Pick your move by entering a number (1‑9) corresponding to the board position:
+4. Run the CLI game:
+   ```bash
+   python cli.py
+   ```
+   Or launch the GUI:
+   ```bash
+   python gui.py
+   ```
+   If installed as a package:
+   ```bash
+   tic-tac-toe
+   tic-tac-toe-gui
+   ```
+5. Choose AI difficulty when prompted: `easy`, `mid`, or `hard`.
+6. Choose total matches for the series.
+7. The first move of Match 1 is chosen randomly, then alternates each match.
+8. Pick your move by entering a number (1‑9) corresponding to the board position:
 
    ```
    +-------+-------+-------+
@@ -57,6 +73,7 @@ Welcome to **Tic-Tac-Toe-Python**, a clean and beginner-friendly command‑line 
 - Players take turns placing their symbols (`O` for you, `X` for the computer) on the board.
 - The first player to align three of their symbols horizontally, vertically, or diagonally wins.
 - If all spaces are filled without a winner, the game ends in a draw.
+- The series winner is decided by total wins after all matches are played.
 
 ---
 
@@ -65,6 +82,15 @@ Welcome to **Tic-Tac-Toe-Python**, a clean and beginner-friendly command‑line 
 - **Easy**: Random legal moves. Great for first‑time players.
 - **Mid**: Tries to win in one move or block you from winning; otherwise random.
 - **Hard**: Uses optimal play (minimax). It won’t make mistakes.
+
+---
+
+## Series Play (Total Matches)
+
+- You choose how many matches to play (e.g., 3, 5, 7).
+- Match 1 starter is random.
+- Each following match alternates the first move between you and the computer.
+- The overall winner is the player with the most wins.
 
 ---
 
@@ -87,7 +113,7 @@ Here's an example of the board during gameplay:
 ## Project Structure
 
 ```
-tic-tac-toe v1.1.py  # Entry point
+gui.py               # GUI (Tkinter)
 cli.py               # Console UI and game loop
 game.py              # Core game logic + AI
 tests/               # Automated tests
@@ -108,25 +134,38 @@ This project is perfect for beginners who want to:
 ## Development & Testing
 
 - Run tests:
+
   ```bash
   python -m pytest
+  ```
+
+- Optional: install dev tools (linting, formatting, typing):
+  ```bash
+  python -m pip install -e .[dev]
   ```
 
 ---
 
 ## Troubleshooting
 
-- **Game doesn’t start**: Make sure you’re running the exact file name with quotes:
+- **Game doesn’t start**: Make sure you’re running from the project root:
   ```bash
-  python "tic-tac-toe v1.1.py"
+  python cli.py
   ```
 - **Module not found**: Ensure you run the command from the project root.
+- **GUI doesn’t launch**: Make sure Tkinter is available in your Python installation.
 
 ---
 
 ## Contributions
 
 Contributions are welcome! If you'd like to improve the AI, enhance the interface, or add new features, feel free to fork the repository and submit a pull request.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## License
 
