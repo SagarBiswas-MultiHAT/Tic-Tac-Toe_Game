@@ -1,5 +1,4 @@
 import game
-
 from game import (
     COMPUTER_SYMBOL,
     EMPTY,

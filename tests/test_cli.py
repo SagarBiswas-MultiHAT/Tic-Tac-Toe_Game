@@ -123,8 +123,16 @@ def test_play_match_starts_with_computer(monkeypatch):
     board[0][2] = PLAYER_SYMBOL
     monkeypatch.setattr(cli, "new_board", lambda: board)
     monkeypatch.setattr(cli, "display_board", lambda *_: None)
-    monkeypatch.setattr(cli, "enter_move", lambda board_arg, _input_fn: apply_move(board_arg, (0, 0), PLAYER_SYMBOL))
-    monkeypatch.setattr(cli, "choose_ai_move", lambda board_arg, _level: apply_move(board_arg, (1, 0), COMPUTER_SYMBOL) or (1, 0))
+
+    def fake_enter_move(board_arg, _input_fn):
+        apply_move(board_arg, (0, 0), PLAYER_SYMBOL)
+
+    def fake_choose_ai_move(board_arg, _level):
+        apply_move(board_arg, (1, 0), COMPUTER_SYMBOL)
+        return (1, 0)
+
+    monkeypatch.setattr(cli, "enter_move", fake_enter_move)
+    monkeypatch.setattr(cli, "choose_ai_move", fake_choose_ai_move)
 
     winner = cli.play_match("hard", COMPUTER_SYMBOL, lambda _prompt: "1")
     assert winner == PLAYER_SYMBOL
