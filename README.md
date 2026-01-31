@@ -4,6 +4,10 @@ Welcome to **Tic-Tac-Toe-Python**, a clean and beginner-friendly command‑line 
 
 ---
 
+![](https://imgur.com/UtwzCle.png)
+
+---
+
 ## Features
 
 - **Interactive Gameplay**: Play in the console or a modern Tkinter GUI.

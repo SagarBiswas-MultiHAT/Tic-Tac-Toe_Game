@@ -1,29 +1,32 @@
 from __future__ import annotations
 
 from random import choice
-from typing import List, Tuple
 
 EMPTY = " "
 PLAYER_SYMBOL = "O"
 COMPUTER_SYMBOL = "X"
-Board = List[List[str]]
-Position = Tuple[int, int]
+Board = list[list[str]]
+Position = tuple[int, int]
 
 
 def new_board() -> Board:
     return [[EMPTY for _ in range(3)] for _ in range(3)]
 
 
-def make_list_of_free_fields(board: Board) -> List[Position]:
+def make_list_of_free_fields(board: Board) -> list[Position]:
     return [(row, col) for row in range(3) for col in range(3) if board[row][col] == EMPTY]
 
 
 def victory_for(board: Board, symbol: str) -> bool:
     for i in range(3):
-        if all(board[i][j] == symbol for j in range(3)) or all(board[j][i] == symbol for j in range(3)):
+        if all(board[i][j] == symbol for j in range(3)):
+            return True
+        if all(board[j][i] == symbol for j in range(3)):
             return True
 
-    if all(board[i][i] == symbol for i in range(3)) or all(board[i][2 - i] == symbol for i in range(3)):
+    if all(board[i][i] == symbol for i in range(3)):
+        return True
+    if all(board[i][2 - i] == symbol for i in range(3)):
         return True
 
     return False
@@ -106,7 +109,7 @@ def choose_ai_move(board: Board, level: str) -> Position | None:
         return position
 
     best_score = -2
-    best_moves: List[Position] = []
+    best_moves: list[Position] = []
     for position in free_fields:
         row, col = position
         board[row][col] = COMPUTER_SYMBOL

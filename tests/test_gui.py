@@ -1,5 +1,5 @@
+tk = pytest.importorskip("tkinter")
 import pytest
-
 
 tk = pytest.importorskip("tkinter")
 

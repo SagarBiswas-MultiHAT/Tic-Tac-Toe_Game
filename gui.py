@@ -121,9 +121,12 @@ class TicTacToeGUI:
         left_card = ttk.Frame(content, padding=16, style="Card.TFrame")
         left_card.grid(row=0, column=0, sticky="n", padx=(0, 16))
 
-        ttk.Label(left_card, text="Series Settings", font=("Segoe UI", 12, "bold"), style="Status.TLabel").pack(
-            fill="x", pady=(0, 12)
-        )
+        ttk.Label(
+            left_card,
+            text="Series Settings",
+            font=("Segoe UI", 12, "bold"),
+            style="Status.TLabel",
+        ).pack(fill="x", pady=(0, 12))
 
         ttk.Label(left_card, text="AI Level", style="Status.TLabel").pack(anchor="w")
         ttk.OptionMenu(left_card, self.difficulty_var, "mid", "easy", "mid", "hard").pack(
@@ -135,11 +138,18 @@ class TicTacToeGUI:
             anchor="w", pady=(6, 12)
         )
 
-        ttk.Button(left_card, text="Start Series", command=self.start_series, style="Primary.TButton").pack(
-            fill="x", pady=(4, 8)
-        )
+        ttk.Button(
+            left_card,
+            text="Start Series",
+            command=self.start_series,
+            style="Primary.TButton",
+        ).pack(fill="x", pady=(4, 8))
         self.next_match_button = ttk.Button(
-            left_card, text="Next Match", command=self.start_match, state="disabled", style="Secondary.TButton"
+            left_card,
+            text="Next Match",
+            command=self.start_match,
+            state="disabled",
+            style="Secondary.TButton",
         )
         self.next_match_button.pack(fill="x")
 
@@ -316,6 +326,7 @@ def main() -> None:
     if "clam" in style.theme_names():
         style.theme_use("clam")
     TicTacToeGUI(root)
+    root.eval('tk::PlaceWindow . center')
     root.mainloop()
 
 

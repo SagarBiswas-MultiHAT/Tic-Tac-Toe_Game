@@ -135,8 +135,10 @@ def run_game(input_fn: Callable[[str], str] = input) -> None:
     difficulty = prompt_difficulty(input_fn)
     total_matches = prompt_total_matches(input_fn)
     first_starter = choice([PLAYER_SYMBOL, COMPUTER_SYMBOL])
+    first_starter_text = "You (O)" if first_starter == PLAYER_SYMBOL else "Computer (X)"
     print(
-        f"Randomly chosen starter for Match 1: {'You (O)' if first_starter == PLAYER_SYMBOL else 'Computer (X)'}\n"
+        "Randomly chosen starter for Match 1: "
+        f"{first_starter_text}\n"
     )
 
     human_wins = 0
